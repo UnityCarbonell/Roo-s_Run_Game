@@ -7,14 +7,17 @@ public class Player : MonoBehaviour
     public int jumpForce;
     public int speedMov;
     public bool touchingFloor = false;
-    //public bool dead;
+
+    public Animator rooAnimator;
+    public float deathDuration;
 
     Rigidbody2D rb;
 
+    public GameEvents ge;
+
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
-        //dead = false;
+        rb = this.GetComponent<Rigidbody2D>();  
     }
 
     void Update()
@@ -33,8 +36,20 @@ public class Player : MonoBehaviour
         touchingFloor = true;
         if (col1.collider.gameObject.tag == "Obstacule")
         {
-            // dead = true;
-            GameObject.Destroy(this.gameObject);
+            StartCoroutine(DeathAnimation());
         }
+    }
+
+    IEnumerator DeathAnimation()
+    {
+        rooAnimator.SetTrigger("Dead");
+        yield return new WaitForSeconds(deathDuration);
+        IsDead();
+    }
+
+    void IsDead()
+    {
+        Debug.Log("Roo is dead");
+        ge.RooDying();
     }
 }
