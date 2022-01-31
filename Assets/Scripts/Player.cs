@@ -12,12 +12,14 @@ public class Player : MonoBehaviour
     public float deathDuration;
 
     Rigidbody2D rb;
+    GameObject roo;
 
     public GameEvents ge;
 
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();  
+        rb = this.GetComponent<Rigidbody2D>();
+        roo = this.gameObject;
     }
 
     void Update()
@@ -27,8 +29,7 @@ public class Player : MonoBehaviour
             touchingFloor = false;
             rb.AddForce(new Vector2(0, jumpForce));
         }
-
-        rb.velocity = new Vector2(speedMov, rb.velocity.y);
+        roo.transform.Translate(new Vector3(speedMov * Time.deltaTime, 0, 0));
     }
 
     private void OnCollisionEnter2D(Collision2D col1)
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
         touchingFloor = true;
         if (col1.collider.gameObject.tag == "Obstacule")
         {
+            CameraScript.Instance.ShakeCam(0, 0.1f, 2);
             StartCoroutine(DeathAnimation());
         }
     }

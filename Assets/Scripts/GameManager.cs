@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
     {
         if (player != null)
         {
-            mainCamera.transform.position = new Vector3(player.transform.position.x,
+           
+           mainCamera.transform.position = new Vector3(player.transform.position.x,
            mainCamera.transform.position.y,
            mainCamera.transform.position.z);
 
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void FinalScore()
     {
+        //CameraScript.Instance.ShakeCam(0, 0.1f, 2);
         finalScoreText.text = "YOUR SCORE IS: " + scoreText.text;
     }
 }
