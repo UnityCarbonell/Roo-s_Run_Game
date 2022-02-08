@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         touchingFloor = true;
         if (col1.collider.gameObject.tag == "Obstacule")
         {
-            CameraScript.Instance.ShakeCam(0, 0.1f, 2);
+            CameraScript.Instance.ShakeCam(5, 5, 2);
             StartCoroutine(DeathAnimation());
         }
     }

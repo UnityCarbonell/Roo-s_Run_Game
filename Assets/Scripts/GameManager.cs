@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool alive;
 
     public int score;
+    public int highScore;
     public Text finalScoreText;
 
     void OnEnable()
@@ -66,7 +67,12 @@ public class GameManager : MonoBehaviour
 
     public void FinalScore()
     {
-        //CameraScript.Instance.ShakeCam(0, 0.1f, 2);
-        finalScoreText.text = "YOUR SCORE IS: " + scoreText.text;
+        if (score > highScore)
+        {
+            highScore = score;
+        }
+        finalScoreText.text = "YOUR SCORE IS: " + scoreText.text + 
+            "\nYOUR HIGHEST SCORE IS: " + highScore.ToString();
+
     }
 }
