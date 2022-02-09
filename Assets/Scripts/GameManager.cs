@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float safePlace = 12.0f;
 
     public Text scoreText;
+    public Text hsText;
 
     public bool alive;
 
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         gameIndex = -7.0f;
         alive = true;
+        LoadDataToGM();
     }
 
     void Update()
@@ -65,14 +66,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void LoadDataToGM()
+    {
+        PlayerData playerData = SaveManager.LoadData();
+        highScore = playerData.highScore;
+        Debug.Log("Data loaded.");
+        hsText.text = "Highest Score: " + highScore.ToString();
+    }
+
+    private void SaveDataFromGM()
+    {
+        highScore = score;
+        SaveManager.SavePlayerData(this);
+        Debug.Log("Data Saved.");
+    }
     public void FinalScore()
     {
         if (score > highScore)
         {
-            highScore = score;
+            SaveDataFromGM();
+            finalScoreText.text = "YOUR SCORE IS: " + scoreText.text +
+                "\nTHAT IS A NEW HIGHSCORE! CONGRATULATIONS!";
         }
-        finalScoreText.text = "YOUR SCORE IS: " + scoreText.text + 
-            "\nYOUR HIGHEST SCORE IS: " + highScore.ToString();
-
+        else
+        {
+            finalScoreText.text = "YOUR SCORE IS: " + scoreText.text + 
+                "\nYOUR HIGHEST SCORE IS: " + highScore.ToString();
+        }
     }
 }
