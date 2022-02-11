@@ -21,23 +21,32 @@ public class GameManager : MonoBehaviour
     public int highScore;
     public Text finalScoreText;
 
+    public int collectedGosths;
+    public int gosthPoints;
+    public int recordGosths;
+
     void OnEnable()
     {
         GameEvents.Died += FinalScore;
+        GameEvents.gc += GosthAdded;
     }
     void OnDisable()
     {
         GameEvents.Died -= FinalScore;
+        GameEvents.gc -= GosthAdded;
     }
     void Start()
     {
         gameIndex = -7.0f;
         alive = true;
+        collectedGosths = 0;
         LoadDataToGM();
     }
 
     void Update()
     {
+        gosthPoints = 50 * collectedGosths;
+        
         if (player != null)
         {
            
@@ -45,8 +54,8 @@ public class GameManager : MonoBehaviour
            mainCamera.transform.position.y,
            mainCamera.transform.position.z);
 
-            scoreText.text = Mathf.Floor(player.transform.position.x).ToString();
-            score = Int32.Parse(scoreText.text);
+           score = Mathf.FloorToInt(player.transform.position.x + gosthPoints);
+           scoreText.text = score.ToString();
         }
 
         while (player != null && gameIndex < player.transform.position.x + safePlace)
@@ -93,5 +102,10 @@ public class GameManager : MonoBehaviour
             finalScoreText.text = "YOUR SCORE IS: " + scoreText.text + 
                 "\nYOUR HIGHEST SCORE IS: " + highScore.ToString();
         }
+    }
+
+    private void GosthAdded()
+    {
+        collectedGosths++;
     }
 }

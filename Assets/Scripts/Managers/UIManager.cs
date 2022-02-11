@@ -5,16 +5,19 @@ public class UIManager : MonoBehaviour
     public Animator deadUI;
     public Animator pauseUI;
     public Animator gameplayUI;
+    public Animator bonusUI;
 
     public GameObject pauseUIObj;
     public GameObject pauseBtnObj;
     void OnEnable()
     {
         GameEvents.Died += DeadScreen;
+        GameEvents.gc += PlusFifty;
     }
     void OnDisable()
     {
         GameEvents.Died -= DeadScreen;
+        GameEvents.gc -= PlusFifty;
     }
 
     public void DeadScreen()
@@ -39,5 +42,10 @@ public class UIManager : MonoBehaviour
         pauseUIObj.SetActive(false);
         Time.timeScale = 1f;
         //pauseUI.SetBool("Pause", false);
+    }
+
+    private void PlusFifty()
+    {
+        bonusUI.SetTrigger("PlusFifty");
     }
 }
