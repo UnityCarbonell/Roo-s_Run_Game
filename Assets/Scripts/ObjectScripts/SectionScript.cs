@@ -9,10 +9,9 @@ public class SectionScript : MonoBehaviour
     {
         StartCoroutine("Destroy");
     }
-
     public IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(15f);
         Destroy(gameObject);
     }
 }

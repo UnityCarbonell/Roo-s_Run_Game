@@ -1,26 +1,30 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class GameManager : MonoBehaviour
 {
-    public GameObject player;
+    //Camera
     public Camera mainCamera;
 
+    //GameObject
+    public GameObject player;
     public GameObject[] prefabSections;
-    public float gameIndex;
-    public float safePlace = 12.0f;
 
+    //Texts
     public Text scoreText;
     public Text hsText;
-
-    public bool alive;
-
-    public int score;
-    public int highScore;
     public Text finalScoreText;
 
+    //Floats
+    public float gameIndex;
+    public float safePlace = 12.0f;
+    
+    //Bools
+    public bool alive;
+
+    //Ints
+    public int score;
+    public int highScore;
     public int collectedGosths;
     public int gosthPoints;
     public int recordGosths;
@@ -42,7 +46,6 @@ public class GameManager : MonoBehaviour
         collectedGosths = 0;
         LoadDataToGM();
     }
-
     void Update()
     {
         gosthPoints = 50 * collectedGosths;
@@ -74,18 +77,18 @@ public class GameManager : MonoBehaviour
             gameIndex += section.sectionSize;
         }
     }
-
     private void LoadDataToGM()
     {
         PlayerData playerData = SaveManager.LoadData();
         highScore = playerData.highScore;
+        recordGosths = playerData.recordGosths;
         Debug.Log("Data loaded.");
         hsText.text = "Highest Score: " + highScore.ToString();
     }
-
     private void SaveDataFromGM()
     {
         highScore = score;
+        recordGosths = collectedGosths;
         SaveManager.SavePlayerData(this);
         Debug.Log("Data Saved.");
     }
@@ -103,9 +106,13 @@ public class GameManager : MonoBehaviour
                 "\nYOUR HIGHEST SCORE IS: " + highScore.ToString();
         }
     }
-
     private void GosthAdded()
     {
         collectedGosths++;
+
+        if (collectedGosths > recordGosths)
+        {
+            SaveDataFromGM();
+        }
     }
 }

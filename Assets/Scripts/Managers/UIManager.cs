@@ -19,13 +19,11 @@ public class UIManager : MonoBehaviour
         GameEvents.Died -= DeadScreen;
         GameEvents.gc -= PlusFifty;
     }
-
     public void DeadScreen()
     {
         deadUI.SetTrigger("Show");
         gameplayUI.SetTrigger("GameOver");
     }
-
     public void Paused()
     {
         Debug.Log("The game is now paused");
@@ -34,7 +32,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         //pauseUI.SetBool("Pause", true);
     }
-
     public void PausedOff()
     {
         Debug.Log("The game is now playing");
@@ -43,7 +40,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         //pauseUI.SetBool("Pause", false);
     }
-
     private void PlusFifty()
     {
         bonusUI.SetTrigger("PlusFifty");

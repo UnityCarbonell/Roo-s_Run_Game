@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         roo = this.gameObject;
     }
-
     void Update()
     {
         if (Input.GetKeyDown("space") && touchingFloor)
@@ -30,17 +29,16 @@ public class Player : MonoBehaviour
         }
         roo.transform.Translate(new Vector3(speedMov * Time.deltaTime, 0, 0));
     }
-
     private void OnCollisionEnter2D(Collision2D col1)
     {
         touchingFloor = true;
         if (col1.collider.gameObject.tag == "Obstacule")
         {
+            speedMov = 0;
             CameraScript.Instance.ShakeCam(5, 5, 2);
             StartCoroutine(DeathAnimation());
         }
     }
-
     IEnumerator DeathAnimation()
     {
         rooAnimator.SetTrigger("Dead");

@@ -13,7 +13,6 @@ public static class SaveManager
         bf.Serialize(fs, pd);
         fs.Close();
     }
-
     public static PlayerData LoadData()
     {
         string dataPath = Application.persistentDataPath + "/data.save";
