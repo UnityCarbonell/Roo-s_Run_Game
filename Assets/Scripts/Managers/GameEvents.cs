@@ -14,7 +14,10 @@ public class GameEvents : MonoBehaviour
     public delegate void GenerateItems();
     public static event GenerateItems geneItems;
 
-    public void Awake()
+    public delegate void ShowRecords();
+    public static event ShowRecords getRec;
+
+    public void Start()
     {
         GI();
     }
@@ -33,5 +36,9 @@ public class GameEvents : MonoBehaviour
     public void GI()
     {
         geneItems();
+    }
+    public void SR()
+    {
+        getRec();
     }
 }

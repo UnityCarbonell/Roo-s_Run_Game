@@ -10,17 +10,23 @@ public class ItemGenerator : MonoBehaviour
     public float axisY;
     public float timeForGosth = 2.5f;
 
+    public bool working;
     public void OnEnable()
     {
         GameEvents.gc += GenerateGosth;
         GameEvents.geneItems += Generate;
+        GameEvents.Died += NotWork;
     }
     public void OnDisable()
     {
         GameEvents.gc -= GenerateGosth;
         GameEvents.geneItems -= Generate;
+        GameEvents.Died -= NotWork;
     }
-
+    private void Start()
+    {
+        working = true;
+    }
     public void FixedUpdate()
     {
         axisX = player.transform.position.x + 15;
@@ -28,18 +34,26 @@ public class ItemGenerator : MonoBehaviour
 
     public void Generate()
     {
-        StartCoroutine("GenerateItems");
+        if (working == true)
+        {
+            StartCoroutine("GenerateItems");
+        }
     }
     IEnumerator GenerateItems()
     {
-        Debug.Log("Creating collectable Items.");
         yield return new WaitForSeconds(timeForGosth);
         GenerateGosth();
     }
     public void GenerateGosth()
     {
-        axisY = Random.Range(-0.5f, 3.79f);
-        Instantiate(itemGosth, new Vector3(axisX, axisY, 1), Quaternion.identity);
-        Debug.Log("Gosth created.");
+        if (working == true)
+        {
+            axisY = Random.Range(-0.5f, 3.79f);
+            Instantiate(itemGosth, new Vector3(axisX, axisY, 1), Quaternion.identity);
+        }
+    }
+    public void NotWork()
+    {
+        working = false;
     }
 }

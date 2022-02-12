@@ -48,7 +48,6 @@ public class Player : MonoBehaviour
 
     void IsDead()
     {
-        Debug.Log("Roo is dead");
         ge.RooDying();
     }
 }

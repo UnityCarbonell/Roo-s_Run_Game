@@ -7,6 +7,10 @@ public class TransitionScript : MonoBehaviour
     public Animator transition;
     public float transitionTime;
 
+    public void HowTo()
+    {
+        StartCoroutine(ChangeScreen(2));
+    }
     public void Play()
     {
         StartCoroutine(ChangeScreen(1));
@@ -18,7 +22,6 @@ public class TransitionScript : MonoBehaviour
     }
     public void Close()
     {
-        Debug.Log("The game is closing");
         Application.Quit();
     }
     IEnumerator ChangeScreen(int levelIndex)

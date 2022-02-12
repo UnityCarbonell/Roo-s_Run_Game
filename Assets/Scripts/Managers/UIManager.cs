@@ -3,12 +3,15 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public Animator deadUI;
-    public Animator pauseUI;
+    //public Animator pauseUI;
     public Animator gameplayUI;
     public Animator bonusUI;
+    public Animator recordUI;
 
     public GameObject pauseUIObj;
     public GameObject pauseBtnObj;
+
+    public GameEvents ge;
     void OnEnable()
     {
         GameEvents.Died += DeadScreen;
@@ -43,5 +46,14 @@ public class UIManager : MonoBehaviour
     private void PlusFifty()
     {
         bonusUI.SetTrigger("PlusFifty");
+    }
+    public void ShowMyBest()
+    {
+        recordUI.SetBool("Record", true);
+        ge.SR();
+    }
+    public void ItsNotThatGoodHideIt()
+    {
+        recordUI.SetBool("Record", false);
     }
 }

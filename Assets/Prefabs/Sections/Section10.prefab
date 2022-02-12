@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019809863151263019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.43, y: 3.5600004, z: 17.260704}
+  m_LocalPosition: {x: 7.43, y: 3.5600004, z: 10}
   m_LocalScale: {x: 1.25, y: 1.25, z: 0}
   m_Children: []
   m_Father: {fileID: 5652286911571533360}
@@ -288,7 +288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5652286911898870251}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7, y: 3.5600004, z: 17.260704}
+  m_LocalPosition: {x: 2.7, y: 3.5600004, z: 10}
   m_LocalScale: {x: 1.25, y: 1.25, z: 0}
   m_Children: []
   m_Father: {fileID: 5652286911571533360}
@@ -387,7 +387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5652286912435785716}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7, y: 4.84, z: 17.260704}
+  m_LocalPosition: {x: 2.7, y: 4.84, z: 10}
   m_LocalScale: {x: 1.25, y: 1.25, z: 0}
   m_Children: []
   m_Father: {fileID: 5652286911571533360}
@@ -486,7 +486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5739313945560002829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.8399997, y: 3.5600004, z: 17.260704}
+  m_LocalPosition: {x: 5.8399997, y: 3.5600004, z: 10}
   m_LocalScale: {x: 1.25, y: 1.25, z: 0}
   m_Children: []
   m_Father: {fileID: 5652286911571533360}
@@ -585,7 +585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7381051894472812219}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.43, y: 4.84, z: 17.260704}
+  m_LocalPosition: {x: 7.43, y: 4.84, z: 10}
   m_LocalScale: {x: 1.25, y: 1.25, z: 0}
   m_Children: []
   m_Father: {fileID: 5652286911571533360}
@@ -684,7 +684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7384719391658361950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.8399997, y: 4.84, z: 17.260704}
+  m_LocalPosition: {x: 5.8399997, y: 4.84, z: 10}
   m_LocalScale: {x: 1.25, y: 1.25, z: 0}
   m_Children: []
   m_Father: {fileID: 5652286911571533360}
@@ -783,7 +783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8794108272744667431}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.29, y: 3.5600004, z: 17.260704}
+  m_LocalPosition: {x: 4.29, y: 3.5600004, z: 10}
   m_LocalScale: {x: 1.25, y: 1.25, z: 0}
   m_Children: []
   m_Father: {fileID: 5652286911571533360}
@@ -882,7 +882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8835291320203952757}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.29, y: 4.84, z: 17.260704}
+  m_LocalPosition: {x: 4.29, y: 4.84, z: 10}
   m_LocalScale: {x: 1.25, y: 1.25, z: 0}
   m_Children: []
   m_Father: {fileID: 5652286911571533360}
@@ -967,6 +967,10 @@ PrefabInstance:
       value: -0.013317645
       objectReference: {fileID: 0}
     - target: {fileID: 3752574235696217603, guid: 94c279dade0e3e74ea082770aaea0d00, type: 3}
+      propertyPath: m_Bounds.m_Center.z
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 3752574235696217603, guid: 94c279dade0e3e74ea082770aaea0d00, type: 3}
       propertyPath: m_Bounds.m_Extent.y
       value: 0.5145502
       objectReference: {fileID: 0}
@@ -977,6 +981,14 @@ PrefabInstance:
     - target: {fileID: 4093389622883851372, guid: 94c279dade0e3e74ea082770aaea0d00, type: 3}
       propertyPath: m_Bounds.m_Center.y
       value: -0.0039197206
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093389622883851372, guid: 94c279dade0e3e74ea082770aaea0d00, type: 3}
+      propertyPath: m_Bounds.m_Center.z
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093389622883851372, guid: 94c279dade0e3e74ea082770aaea0d00, type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 0.5145501
       objectReference: {fileID: 0}
     - target: {fileID: 4093389623426198810, guid: 94c279dade0e3e74ea082770aaea0d00, type: 3}
       propertyPath: m_Bounds.m_Center.x

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text hsText;
     public Text finalScoreText;
+    public Text recordsText;
 
     //Floats
     public float gameIndex;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     public bool alive;
 
     //Ints
+    public int position;
     public int score;
     public int highScore;
     public int collectedGosths;
@@ -33,11 +35,13 @@ public class GameManager : MonoBehaviour
     {
         GameEvents.Died += FinalScore;
         GameEvents.gc += GosthAdded;
+        GameEvents.getRec += GetRecords;
     }
     void OnDisable()
     {
         GameEvents.Died -= FinalScore;
         GameEvents.gc -= GosthAdded;
+        GameEvents.getRec -= GetRecords;
     }
     void Start()
     {
@@ -49,7 +53,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         gosthPoints = 50 * collectedGosths;
-        
+        position = Mathf.FloorToInt(player.transform.position.x + gosthPoints);
         if (player != null)
         {
            
@@ -57,13 +61,16 @@ public class GameManager : MonoBehaviour
            mainCamera.transform.position.y,
            mainCamera.transform.position.z);
 
-           score = Mathf.FloorToInt(player.transform.position.x + gosthPoints);
-           scoreText.text = score.ToString();
+            if (position > score)
+            {
+                score = position;
+                scoreText.text = score.ToString();
+            }
         }
 
         while (player != null && gameIndex < player.transform.position.x + safePlace)
         {
-            int sectionIndex = UnityEngine.Random.Range(1, prefabSections.Length);
+            int sectionIndex = Random.Range(1, prefabSections.Length);
 
             if (gameIndex < 0)
             {
@@ -115,4 +122,20 @@ public class GameManager : MonoBehaviour
             SaveDataFromGM();
         }
     }
+    public void GetRecords()
+    {
+        recordsText.text = "Highest Score: " + highScore.ToString()
+            + "\nBest Gosths collected: " + recordGosths.ToString();
+    }
+
+    //Only for testing purposes
+    
+    public void EraseRecords()
+    {
+        highScore = 0;
+        recordGosths = 0;
+        SaveManager.SavePlayerData(this);
+        Debug.Log("Data erased.");
+    }
+    
 }
