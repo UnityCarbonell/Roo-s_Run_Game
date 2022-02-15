@@ -164,6 +164,7 @@ MonoBehaviour:
   ge: {fileID: 0}
   it: {fileID: 0}
   delayTime: 0.5
+  gosthAudio: {fileID: 5067016424170781807, guid: 6479b79ed816e164ea5670f3bb025e3a, type: 3}
 --- !u!114 &7330622872561415138
 MonoBehaviour:
   m_ObjectHideFlags: 0

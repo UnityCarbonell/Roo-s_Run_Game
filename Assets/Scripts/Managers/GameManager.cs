@@ -8,7 +8,11 @@ public class GameManager : MonoBehaviour
 
     //GameObject
     public GameObject player;
+    public GameObject audioManager;
     public GameObject[] prefabSections;
+
+    //AudioSorce
+    public AudioSource gamplayMusic;
 
     //Texts
     public Text scoreText;
@@ -49,6 +53,8 @@ public class GameManager : MonoBehaviour
         alive = true;
         collectedGosths = 0;
         LoadDataToGM();
+
+        gamplayMusic = audioManager.GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -84,6 +90,18 @@ public class GameManager : MonoBehaviour
             gameIndex += section.sectionSize;
         }
     }
+    public void StopMusic()
+    {
+        if (gamplayMusic.enabled == true)
+        {
+            gamplayMusic.enabled = false;
+        }
+        else
+        {
+            gamplayMusic.enabled = true;
+        }
+        
+    }
     private void LoadDataToGM()
     {
         PlayerData playerData = SaveManager.LoadData();
@@ -101,6 +119,8 @@ public class GameManager : MonoBehaviour
     }
     public void FinalScore()
     {
+        gamplayMusic.enabled = false;
+
         if (score > highScore)
         {
             SaveDataFromGM();
@@ -129,7 +149,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Only for testing purposes
-    
+    /*
     public void EraseRecords()
     {
         highScore = 0;
@@ -137,5 +157,5 @@ public class GameManager : MonoBehaviour
         SaveManager.SavePlayerData(this);
         Debug.Log("Data erased.");
     }
-    
+    */
 }
